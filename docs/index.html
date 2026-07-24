@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>网盘资源分享</title>
+<meta name="description" content="涵盖动漫、图书、教程、工具、美食等各类资源">
+<style>* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #f8f9fb;
+  --card-bg: #ffffff;
+  --text: #1a1a2e;
+  --text-secondary: #5a5f72;
+  --border: #e8ecf1;
+  --accent: #4f6ef7;
+  --accent-hover: #3b54d4;
+  --tag-bg: #eef1ff;
+  --tag-text: #4f6ef7;
+  --sidebar-bg: #ffffff;
+  --sidebar-width: 260px;
+  --radius: 8px;
+  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow-hover: 0 4px 16px rgba(0,0,0,.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1117;
+    --card-bg: #1a1d27;
+    --text: #e4e6ed;
+    --text-secondary: #9699ab;
+    --border: #2a2d3a;
+    --accent: #6c8cff;
+    --accent-hover: #8ba3ff;
+    --tag-bg: #1e2340;
+    --tag-text: #8ba3ff;
+    --sidebar-bg: #141620;
+    --shadow: 0 1px 3px rgba(0,0,0,.2);
+    --shadow-hover: 0 4px 20px rgba(0,0,0,.3);
+  }
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  padding: 24px 20px;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.sidebar-header { margin-bottom: 28px; }
+.sidebar-header h1 { font-size: 20px; font-weight: 700; color: var(--text); }
+.sidebar-header p { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+
+.search-box {
+  width: 100%; padding: 9px 14px;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--bg); color: var(--text);
+  font-size: 13px; outline: none; margin-bottom: 20px;
+  transition: border-color .2s;
+}
+.search-box:focus { border-color: var(--accent); }
+.search-box::placeholder { color: var(--text-secondary); }
+
+.nav-list { list-style: none; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 6px;
+  cursor: pointer; font-size: 14px; color: var(--text-secondary);
+  transition: all .15s; margin-bottom: 2px;
+  border: none; background: none; width: 100%; text-align: left;
+  font-family: inherit;
+}
+.nav-item:hover { background: var(--bg); color: var(--text); }
+.nav-item.active { background: var(--tag-bg); color: var(--accent); font-weight: 600; }
+.nav-item .icon { font-size: 18px; flex-shrink: 0; }
+.nav-item .count { margin-left: auto; font-size: 12px; opacity: .6; }
+
+.results-info {
+  font-size: 12px; color: var(--text-secondary);
+  margin: 8px 0 12px 12px; display: none;
+}
+
+/* Main */
+.main {
+  margin-left: var(--sidebar-width);
+  flex: 1; padding: 32px 36px;
+  max-width: 1100px;
+}
+
+.category-section { margin-bottom: 40px; }
+.category-header {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 16px;
+}
+.category-header h2 { font-size: 22px; font-weight: 700; }
+.category-header .icon { font-size: 26px; }
+.category-desc { color: var(--text-secondary); font-size: 14px; margin-bottom: 16px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: var(--shadow);
+  transition: box-shadow .2s, transform .2s;
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-1px); }
+.card h3 { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--text); }
+.card p { font-size: 13px; color: var(--text-secondary); margin-bottom: 12px; line-height: 1.5; }
+
+.card-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+.tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-size: 11px; padding: 3px 9px; border-radius: 4px;
+  background: var(--tag-bg); color: var(--tag-text);
+  white-space: nowrap;
+}
+
+.card-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 13px; color: var(--accent); text-decoration: none;
+  font-weight: 500; transition: color .15s;
+}
+.card-link:hover { color: var(--accent-hover); }
+.card-link.no-link { color: var(--text-secondary); opacity: .5; pointer-events: none; }
+
+.empty-state {
+  text-align: center; padding: 60px 20px; color: var(--text-secondary);
+}
+.empty-state .icon { font-size: 48px; margin-bottom: 12px; }
+.empty-state p { font-size: 14px; }
+
+/* Mobile toggle */
+.menu-toggle {
+  display: none; position: fixed; top: 16px; left: 16px; z-index: 20;
+  width: 40px; height: 40px; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--card-bg);
+  color: var(--text); font-size: 20px; cursor: pointer; align-items: center;
+  justify-content: center; box-shadow: var(--shadow);
+}
+
+.overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 9; }
+
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    box-shadow: 2px 0 16px rgba(0,0,0,.15);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .overlay.show { display: block; }
+  .main { margin-left: 0; padding: 20px 16px 20px 56px; }
+  .grid { grid-template-columns: 1fr; }
+  .category-header h2 { font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+  .main { padding: 16px 12px 16px 44px; }
+  .card { padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<button class="menu-toggle" id="menu-toggle" aria-label="菜单">&#9776;</button>
+<div class="overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h1>网盘资源分享</h1>
+    <p>夸克网盘精选资源合集</p>
+  </div>
+  <input type="text" class="search-box" placeholder="搜索资源..."
+         oninput="handleSearch(event)" aria-label="搜索">
+  <nav>
+    <ul class="nav-list">
+      <li><button class="nav-item active" data-cat="all" onclick="setCategory('all')">
+        <span class="icon">🏠</span>全部资源
+      </button></li>
+      <button class="nav-item" data-cat="business" onclick="setCategory('business')"><span class="icon">💼</span>创业变现<span class="count">1</span></button>
+<button class="nav-item" data-cat="tools" onclick="setCategory('tools')"><span class="icon">🛠️</span>实用工具<span class="count">5</span></button>
+<button class="nav-item" data-cat="books" onclick="setCategory('books')"><span class="icon">📚</span>图书资料<span class="count">4</span></button>
+<button class="nav-item" data-cat="fashion" onclick="setCategory('fashion')"><span class="icon">👔</span>穿搭形象<span class="count">1</span></button>
+<button class="nav-item" data-cat="anime" onclick="setCategory('anime')"><span class="icon">🎬</span>动漫番剧<span class="count">6</span></button>
+<button class="nav-item" data-cat="education" onclick="setCategory('education')"><span class="icon">🎓</span>学习教育<span class="count">2</span></button>
+<button class="nav-item" data-cat="video" onclick="setCategory('video')"><span class="icon">🎥</span>影视教程<span class="count">2</span></button>
+<button class="nav-item" data-cat="comics" onclick="setCategory('comics')"><span class="icon">💬</span>漫画资源<span class="count">1</span></button>
+<button class="nav-item" data-cat="cooking" onclick="setCategory('cooking')"><span class="icon">🍳</span>美食烹饪<span class="count">2</span></button>
+<button class="nav-item" data-cat="repair" onclick="setCategory('repair')"><span class="icon">🔧</span>维修技能<span class="count">1</span></button>
+    </ul>
+    <div class="results-info" id="results-info"></div>
+  </nav>
+  <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
+              font-size: 11px; color: var(--text-secondary); line-height: 1.8;">
+    <p>资源来自夸克网盘</p>
+    <p>点击「前往下载」获取</p>
+    <p>链接失效请联系更新</p>
+  </div>
+</aside>
+
+<main class="main" id="content"></main>
+
+<script>const categories = [{"id": "business", "name": "创业变现", "icon": "💼", "description": "副业赚钱、短视频变现教程", "resources": [{"name": "短剧变现 全套教程", "description": "短剧变现 全套教程 | 提取码: a2CD", "tags": [], "quark_link": "https://pan.quark.cn/s/e2872f4f73d9"}]}, {"id": "tools", "name": "实用工具", "icon": "🛠️", "description": "办公软件、效率工具、实用程序", "resources": [{"name": "2026最新WPS电脑+手机破解", "description": "2026最新WPS电脑+手机破解 | 提取码: BTk9", "tags": [], "quark_link": "https://pan.quark.cn/s/38498e192b62"}, {"name": "谷歌地球", "description": "谷歌地球 | 提取码: 4n3x", "tags": [], "quark_link": "https://pan.quark.cn/s/9bbf00e01d92"}, {"name": "TTSMaker", "description": "TTSMaker | 提取码: CDkY", "tags": [], "quark_link": "https://pan.quark.cn/s/e0f0d185e907"}, {"name": "WPS破解版（手机夸克保存）", "description": "WPS破解版（手机夸克保存） | 提取码: VsC9", "tags": [], "quark_link": "https://pan.quark.cn/s/bbc557d20fe6"}, {"name": "150套excel练习素材～先转存", "description": "150套excel练习素材～先转存 | 提取码: AaxH", "tags": [], "quark_link": "https://pan.quark.cn/s/ff8cf8e37812"}]}, {"id": "books", "name": "图书资料", "icon": "📚", "description": "各类电子书、绝版书籍、出版社合集", "resources": [{"name": "☯世界相命全集", "description": "☯世界相命全集 | 提取码: HGyR", "tags": [], "quark_link": "https://pan.quark.cn/s/69e843714c4a"}, {"name": "J击的J人 全集", "description": "J击的J人 全集 | 提取码: mmLb", "tags": [], "quark_link": "https://pan.quark.cn/s/6e7a3ba5ddb2"}, {"name": "绝版书籍合集", "description": "绝版书籍合集 | 提取码: sH4b", "tags": [], "quark_link": "https://pan.quark.cn/s/999df97a701f"}, {"name": "中信出版社图书合集2000册", "description": "中信出版社图书合集2000册 | 提取码: xtqi", "tags": [], "quark_link": "https://pan.quark.cn/s/e602eff7f390"}]}, {"id": "fashion", "name": "穿搭形象", "icon": "👔", "description": "男士穿搭、形象提升攻略", "resources": [{"name": "男士穿搭变帅攻略", "description": "男士穿搭变帅攻略 | 提取码: m3cu", "tags": [], "quark_link": "https://pan.quark.cn/s/3e3622e1c2f6"}]}, {"id": "anime", "name": "动漫番剧", "icon": "🎬", "description": "热门日漫、动画番剧合集", "resources": [{"name": "强风吹拂", "description": "强风吹拂 | 提取码: vdrT", "tags": [], "quark_link": "https://pan.quark.cn/s/99d856f28442"}, {"name": "海贼王 【更1117】[日漫4K] TV+剧场版", "description": "海贼王 【更1117】[日漫4K] TV+剧场版 | 提取码: MTfk", "tags": [], "quark_link": "https://pan.quark.cn/s/da496810f1d7"}, {"name": "怪兽8号", "description": "怪兽8号 | 提取码: ij7J", "tags": [], "quark_link": "https://pan.quark.cn/s/dfafd8accda6"}, {"name": "鬼灭柱训练篇", "description": "鬼灭柱训练篇 | 提取码: gHZE", "tags": [], "quark_link": "https://pan.quark.cn/s/1670c7f24986"}, {"name": "星际牛仔", "description": "星际牛仔 | 提取码: GRtu", "tags": [], "quark_link": "https://pan.quark.cn/s/a21775026d7c"}, {"name": "新世纪福音战士EVA合集", "description": "新世纪福音战士EVA合集 | 提取码: Cv8N", "tags": [], "quark_link": "https://pan.quark.cn/s/0b9ba8ebbc2d"}]}, {"id": "education", "name": "学习教育", "icon": "🎓", "description": "英语学习、雅思备考、教学课程", "resources": [{"name": "雅思旗舰VIP直达7分班", "description": "雅思旗舰VIP直达7分班 | 提取码: TE1H", "tags": [], "quark_link": "https://pan.quark.cn/s/3d5323536dbe"}, {"name": "【新概念英语】全套教学视频+音频（83GB)", "description": "【新概念英语】全套教学视频+音频（83GB) | 提取码: YTjz", "tags": [], "quark_link": "https://pan.quark.cn/s/97e0cdf2167a"}]}, {"id": "video", "name": "影视教程", "icon": "🎥", "description": "纪录片、影视制作、拍摄教程", "resources": [{"name": "【纪录片】BBC纪录片78部合集", "description": "【纪录片】BBC纪录片78部合集 | 提取码: LhvW", "tags": [], "quark_link": "https://pan.quark.cn/s/f8471d3b826a"}, {"name": "影视飓风《B站课堂：只看8节课，用iPhone拍出电影感 (含课件) 》", "description": "影视飓风《B站课堂：只看8节课，用iPhone拍出电影感 (含课件) 》 | 提取码: XPBh", "tags": [], "quark_link": "https://pan.quark.cn/s/9d23318c3e8a"}]}, {"id": "comics", "name": "漫画资源", "icon": "💬", "description": "漫威、DC 漫画合集", "resources": [{"name": "漫威漫画合集", "description": "漫威漫画合集 | 提取码: YkGz", "tags": [], "quark_link": "https://pan.quark.cn/s/4405ca4c0b32"}]}, {"id": "cooking", "name": "美食烹饪", "icon": "🍳", "description": "小吃教程、烹饪技巧、减脂食谱", "resources": [{"name": "小吃教程合集", "description": "小吃教程合集 | 提取码: WL8C", "tags": [], "quark_link": "https://pan.quark.cn/s/8262239c6b02"}, {"name": "减肥食谱(1)", "description": "减肥食谱(1) | 提取码: dFwZ", "tags": [], "quark_link": "https://pan.quark.cn/s/92963ae0149b"}]}, {"id": "repair", "name": "维修技能", "icon": "🔧", "description": "家电维修、电脑组装、电子维修", "resources": [{"name": "最全家电维修大全视频教程", "description": "最全家电维修大全视频教程", "tags": [], "quark_link": "https://pan.quark.cn/s/156214af94d9498a9efe4e74304db08d"}]}];
+
+let activeCategory = 'all';
+let searchQuery = '';
+
+function renderAll() {
+  const filtered = categories.filter(c => {
+    if (activeCategory !== 'all' && c.id !== activeCategory) return false;
+    if (!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return (
+      c.name.toLowerCase().includes(q) ||
+      c.description.toLowerCase().includes(q) ||
+      c.resources.some(r =>
+        r.name.toLowerCase().includes(q) ||
+        r.description.toLowerCase().includes(q) ||
+        r.tags.some(t => t.toLowerCase().includes(q))
+      )
+    );
+  });
+
+  const main = document.getElementById('content');
+  const count = filtered.reduce((sum, c) => sum + c.resources.length, 0);
+
+  if (filtered.length === 0) {
+    main.innerHTML = `<div class="empty-state">
+      <div class="icon">🔍</div>
+      <p>没有找到匹配的资源，换个关键词试试</p>
+    </div>`;
+  } else {
+    let html = '';
+    filtered.forEach(cat => {
+      html += `<section class="category-section" id="cat-${cat.id}">
+        <div class="category-header"><span class="icon">${cat.icon}</span><h2>${cat.name}</h2></div>
+        <p class="category-desc">${cat.description}</p>
+        <div class="grid">`;
+      cat.resources.forEach(r => {
+        const hasLink = r.quark_link && r.quark_link.trim();
+        html += `<div class="card">
+          <h3>${r.name}</h3>
+          <p>${r.description}</p>
+          <div class="card-footer">
+            <div class="tags">${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+            <a class="card-link${hasLink ? '' : ' no-link'}" href="${hasLink ? r.quark_link : '#'}"
+               target="_blank" rel="noopener" ${hasLink ? '' : 'onclick="return false"'}>
+              ${hasLink ? '前往下载 &#8599;' : '待补充'}
+            </a>
+          </div>
+        </div>`;
+      });
+      html += '</div></section>';
+    });
+    main.innerHTML = html;
+  }
+
+  // Update results info
+  document.getElementById('results-info').style.display = searchQuery ? 'block' : 'none';
+  document.getElementById('results-info').textContent = `找到 ${count} 个资源`;
+}
+
+function updateNav() {
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.classList.toggle('active', el.dataset.cat === activeCategory);
+  });
+}
+
+function setCategory(catId) {
+  activeCategory = catId;
+  updateNav();
+  renderAll();
+  // Close sidebar on mobile
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+function handleSearch(e) {
+  searchQuery = e.target.value.trim();
+  renderAll();
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  renderAll();
+
+  document.getElementById('menu-toggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+  });
+
+  document.getElementById('overlay').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('show');
+  });
+});
+</script>
+</body>
+</html>
