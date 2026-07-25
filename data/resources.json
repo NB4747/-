@@ -6,6 +6,44 @@
   },
   "categories": [
     {
+      "id": "tools",
+      "name": "实用工具",
+      "icon": "🛠️",
+      "description": "办公软件、效率工具、实用程序",
+      "resources": [
+        {
+          "name": "150套excel练习素材～先转存",
+          "description": "150套excel练习素材～先转存",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/11b753805605"
+        },
+        {
+          "name": "2026最新WPS电脑+手机破解",
+          "description": "2026最新WPS电脑+手机破解",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/12e5446f8744"
+        },
+        {
+          "name": "谷歌地球",
+          "description": "谷歌地球",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/1c1015b067ec"
+        },
+        {
+          "name": "TTSMaker",
+          "description": "TTSMaker",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/02ec4a2417fa"
+        },
+        {
+          "name": "WPS破解版（手机夸克保存）",
+          "description": "WPS破解版（手机夸克保存）",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/81c56650751c"
+        }
+      ]
+    },
+    {
       "id": "business",
       "name": "创业变现",
       "icon": "💼",
@@ -13,93 +51,9 @@
       "resources": [
         {
           "name": "短剧变现 全套教程",
-          "description": "短剧变现 全套教程 | 提取码: a2CD",
+          "description": "短剧变现 全套教程",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/e2872f4f73d9"
-        }
-      ]
-    },
-    {
-      "id": "tools",
-      "name": "实用工具",
-      "icon": "🛠️",
-      "description": "办公软件、效率工具、实用程序",
-      "resources": [
-        {
-          "name": "2026最新WPS电脑+手机破解",
-          "description": "2026最新WPS电脑+手机破解 | 提取码: BTk9",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/38498e192b62"
-        },
-        {
-          "name": "谷歌地球",
-          "description": "谷歌地球 | 提取码: 4n3x",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/9bbf00e01d92"
-        },
-        {
-          "name": "TTSMaker",
-          "description": "TTSMaker | 提取码: CDkY",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/e0f0d185e907"
-        },
-        {
-          "name": "WPS破解版（手机夸克保存）",
-          "description": "WPS破解版（手机夸克保存） | 提取码: VsC9",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/bbc557d20fe6"
-        },
-        {
-          "name": "150套excel练习素材～先转存",
-          "description": "150套excel练习素材～先转存 | 提取码: AaxH",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/ff8cf8e37812"
-        }
-      ]
-    },
-    {
-      "id": "books",
-      "name": "图书资料",
-      "icon": "📚",
-      "description": "各类电子书、绝版书籍、出版社合集",
-      "resources": [
-        {
-          "name": "☯世界相命全集",
-          "description": "☯世界相命全集 | 提取码: HGyR",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/69e843714c4a"
-        },
-        {
-          "name": "J击的J人 全集",
-          "description": "J击的J人 全集 | 提取码: mmLb",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/6e7a3ba5ddb2"
-        },
-        {
-          "name": "绝版书籍合集",
-          "description": "绝版书籍合集 | 提取码: sH4b",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/999df97a701f"
-        },
-        {
-          "name": "中信出版社图书合集2000册",
-          "description": "中信出版社图书合集2000册 | 提取码: xtqi",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/e602eff7f390"
-        }
-      ]
-    },
-    {
-      "id": "fashion",
-      "name": "穿搭形象",
-      "icon": "👔",
-      "description": "男士穿搭、形象提升攻略",
-      "resources": [
-        {
-          "name": "男士穿搭变帅攻略",
-          "description": "男士穿搭变帅攻略 | 提取码: m3cu",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/3e3622e1c2f6"
+          "quark_link": "https://pan.quark.cn/s/77c8242ac569"
         }
       ]
     },
@@ -110,80 +64,92 @@
       "description": "热门日漫、动画番剧合集",
       "resources": [
         {
-          "name": "强风吹拂",
-          "description": "强风吹拂 | 提取码: vdrT",
+          "name": "鬼灭柱训练篇",
+          "description": "鬼灭柱训练篇",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/99d856f28442"
-        },
-        {
-          "name": "海贼王 【更1117】[日漫4K] TV+剧场版",
-          "description": "海贼王 【更1117】[日漫4K] TV+剧场版 | 提取码: MTfk",
-          "tags": [],
-          "quark_link": "https://pan.quark.cn/s/da496810f1d7"
+          "quark_link": "https://pan.quark.cn/s/ba35d1bf4296"
         },
         {
           "name": "怪兽8号",
-          "description": "怪兽8号 | 提取码: ij7J",
+          "description": "怪兽8号",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/dfafd8accda6"
+          "quark_link": "https://pan.quark.cn/s/8a627426def9"
         },
         {
-          "name": "鬼灭柱训练篇",
-          "description": "鬼灭柱训练篇 | 提取码: gHZE",
+          "name": "海贼王 【更1117】[日漫4K] TV+剧场版",
+          "description": "海贼王 【更1117】[日漫4K] TV+剧场版",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/1670c7f24986"
+          "quark_link": "https://pan.quark.cn/s/11b9311f183b"
+        },
+        {
+          "name": "强风吹拂",
+          "description": "强风吹拂",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/f36f7b0f0d48"
         },
         {
           "name": "星际牛仔",
-          "description": "星际牛仔 | 提取码: GRtu",
+          "description": "星际牛仔",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/a21775026d7c"
+          "quark_link": "https://pan.quark.cn/s/41949dc7e881"
         },
         {
           "name": "新世纪福音战士EVA合集",
-          "description": "新世纪福音战士EVA合集 | 提取码: Cv8N",
+          "description": "新世纪福音战士EVA合集",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/0b9ba8ebbc2d"
+          "quark_link": "https://pan.quark.cn/s/09bd41dda786"
         }
       ]
     },
     {
-      "id": "education",
-      "name": "学习教育",
-      "icon": "🎓",
-      "description": "英语学习、雅思备考、教学课程",
+      "id": "books",
+      "name": "图书资料",
+      "icon": "📚",
+      "description": "各类电子书、绝版书籍、出版社合集",
       "resources": [
         {
-          "name": "雅思旗舰VIP直达7分班",
-          "description": "雅思旗舰VIP直达7分班 | 提取码: TE1H",
+          "name": "绝版书籍合集",
+          "description": "绝版书籍合集",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/3d5323536dbe"
+          "quark_link": "https://pan.quark.cn/s/a9bf5c00dc03"
         },
         {
-          "name": "【新概念英语】全套教学视频+音频（83GB)",
-          "description": "【新概念英语】全套教学视频+音频（83GB) | 提取码: YTjz",
+          "name": "J击的J人 全集",
+          "description": "J击的J人 全集",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/97e0cdf2167a"
+          "quark_link": "https://pan.quark.cn/s/c08186236800"
+        },
+        {
+          "name": "中信出版社图书合集2000册",
+          "description": "中信出版社图书合集2000册",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/709b4b7d5b12"
+        },
+        {
+          "name": "☯世界相命全集",
+          "description": "☯世界相命全集",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/36a4bf8da20e"
         }
       ]
     },
     {
-      "id": "video",
-      "name": "影视教程",
-      "icon": "🎥",
-      "description": "纪录片、影视制作、拍摄教程",
+      "id": "cooking",
+      "name": "美食烹饪",
+      "icon": "🍳",
+      "description": "小吃教程、烹饪技巧、减脂食谱",
       "resources": [
         {
-          "name": "【纪录片】BBC纪录片78部合集",
-          "description": "【纪录片】BBC纪录片78部合集 | 提取码: LhvW",
+          "name": "减肥食谱(1)",
+          "description": "减肥食谱(1)",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/f8471d3b826a"
+          "quark_link": "https://pan.quark.cn/s/6a459947a3f3"
         },
         {
-          "name": "影视飓风《B站课堂：只看8节课，用iPhone拍出电影感 (含课件) 》",
-          "description": "影视飓风《B站课堂：只看8节课，用iPhone拍出电影感 (含课件) 》 | 提取码: XPBh",
+          "name": "小吃教程合集",
+          "description": "小吃教程合集",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/9d23318c3e8a"
+          "quark_link": "https://pan.quark.cn/s/cd6f75c6ee1b"
         }
       ]
     },
@@ -195,29 +161,63 @@
       "resources": [
         {
           "name": "漫威漫画合集",
-          "description": "漫威漫画合集 | 提取码: YkGz",
+          "description": "漫威漫画合集",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/4405ca4c0b32"
+          "quark_link": "https://pan.quark.cn/s/ce626bf28ed7"
         }
       ]
     },
     {
-      "id": "cooking",
-      "name": "美食烹饪",
-      "icon": "🍳",
-      "description": "小吃教程、烹饪技巧、减脂食谱",
+      "id": "fashion",
+      "name": "穿搭形象",
+      "icon": "👔",
+      "description": "男士穿搭、形象提升攻略",
       "resources": [
         {
-          "name": "小吃教程合集",
-          "description": "小吃教程合集 | 提取码: WL8C",
+          "name": "男士穿搭变帅攻略",
+          "description": "男士穿搭变帅攻略",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/8262239c6b02"
+          "quark_link": "https://pan.quark.cn/s/07d1b93b5cfc"
+        }
+      ]
+    },
+    {
+      "id": "video",
+      "name": "影视教程",
+      "icon": "🎥",
+      "description": "纪录片、影视制作、拍摄教程",
+      "resources": [
+        {
+          "name": "影视飓风《B站课堂：只看8节课，用iPhone拍出电影感 (含课件) 》",
+          "description": "影视飓风《B站课堂：只看8节课，用iPhone拍出电影感 (含课件) 》",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/0fc6281368b7"
         },
         {
-          "name": "减肥食谱(1)",
-          "description": "减肥食谱(1) | 提取码: dFwZ",
+          "name": "【纪录片】BBC纪录片78部合集",
+          "description": "【纪录片】BBC纪录片78部合集",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/92963ae0149b"
+          "quark_link": "https://pan.quark.cn/s/1cf2c347e88a"
+        }
+      ]
+    },
+    {
+      "id": "education",
+      "name": "学习教育",
+      "icon": "🎓",
+      "description": "英语学习、雅思备考、教学课程",
+      "resources": [
+        {
+          "name": "雅思旗舰VIP直达7分班",
+          "description": "雅思旗舰VIP直达7分班",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/82417c68ece7"
+        },
+        {
+          "name": "【新概念英语】全套教学视频+音频（83GB)",
+          "description": "【新概念英语】全套教学视频+音频（83GB)",
+          "tags": [],
+          "quark_link": "https://pan.quark.cn/s/874cb1b771e4"
         }
       ]
     },
@@ -231,7 +231,7 @@
           "name": "最全家电维修大全视频教程",
           "description": "最全家电维修大全视频教程",
           "tags": [],
-          "quark_link": "https://pan.quark.cn/s/156214af94d9498a9efe4e74304db08d"
+          "quark_link": "https://pan.quark.cn/s/8fd66a37fad0"
         }
       ]
     }
